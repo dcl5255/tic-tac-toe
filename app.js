@@ -170,5 +170,5 @@ const close_main_menu = () => {
 }
 
 const open_github = () => {
-    open("https://github.com/dcl5255");
+    open("https://github.com/dcl5255/tic-tac-toe");
 }
