@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 0.3em;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+}
+
+.play-area {
+    display: grid;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: auto auto auto;
+    margin-top: 20px;
+}
+
+.main-menu {
+    display: grid;
+    width: 300px;
+    height: 100px;
+    grid-template-columns: auto auto;
+    margin-top: 20px;
+}
+
+.player1Win {
+    color: green;
+    transition: popout 0.5s ease;
+    -webkit-animation: popout 0.5s ease;
+}
+
+.player2Win {
+    color: red;
+    transition: popout 0.5s ease;
+    -webkit-animation: popout 0.5s ease;
+}
+
+.draw {
+    color: rgb(93, 35, 110);
+    transition: popout 0.5s ease;
+    -webkit-animation: popout 0.5s ease;
+}
+
+#winner {
+    height: 1rem;
+    margin-top: -1em;
+    margin-bottom: 1em;
+}
+
+.block {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    border: 3px solid black;
+    transition: background 0.2s ease-in-out;
+}
+
+#block_0,
+#block_1,
+#block_2 {
+    border-top: none;
+}
+
+#block_0,
+#block_3,
+#block_6 {
+    border-left: none;
+}
+
+#block_6,
+#block_7,
+#block_8 {
+    border-bottom: none;
+}
+
+#block_2,
+#block_5,
+#block_8 {
+    border-right: none;
+}
+
+@keyframes popout {
+    from{transform:scale(0)}
+    80%{transform:scale(1.2)}
+    to{transform:scale(1)}
+}
+@-webkit-keyframes popout {
+    from{-webkit-transform:scale(0)}
+    80%{-webkit-transform:scale(1.2)}
+    to{-webkit-transform:scale(1)}
+}
+
+.block:hover {
+    cursor: pointer;
+    background: #128812;
+}
+
+.occupied:hover {
+    background: #ff3a3a;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.shown {
+    display: block;
+}
+
+#play-computer, #play-player, #github-link, #close-menu {
+    outline: none;
+    border-radius: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: none;
+    background-color: #b561b5;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    margin: 10px;
+}
+
+#play-computer:hover, #play-player:hover, #github-link:hover, #close-menu:hover {
+    cursor: pointer;
+    background: #1fb589f7;
+    color: black;
+}
+
+#main-menu-btn {
+    outline: none;
+    border-radius: 20px;
+    border: 4px solid rgb(0, 0, 0);
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: none;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    margin-bottom: 40px;
+    margin-top: -10px;
+}
+
+#reset-btn{
+    outline: none;
+    border-radius: 20px;
+    border: 4px solid rgb(0, 0, 0);
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: none;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    margin-top: 20px;
+}
+
+#reset-btn:hover, #main-menu-btn:hover {
+    cursor: pointer;
+    background: green;
+    color: white;
+}
