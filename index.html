@@ -10,19 +10,19 @@
     <body>
         <div class="container">
             <h1>Tic-Tac-Toe</h1>
-            <button id="main-menu-btn" onClick="show_main_menu()" style="display: none;">Main Menu</button>
+            <button id="main-menu-btn" onClick="showMainMenu()" style="display: none;">Main Menu</button>
             <h2 id="winner" style="display: none;"></h2>
 
             <div class="main-menu" id="main-menu">
-                <button id="play-computer" onClick="play_computer(true)">VS Computer</button>
-                <button id="play-player" onClick="play_computer(false)">VS Player</button>
-                <button id="github-link" onClick="open_github()" style="display: none;">View on Github</button>
-                <button id="close-menu" onClick="close_main_menu()" style="display: none;">Close Menu</button>
+                <button id="play-computer" onClick="playComputer(true)">VS Computer</button>
+                <button id="play-player" onClick="playComputer(false)">VS Player</button>
+                <button id="github-link" onClick="openGithub()" style="display: none;">View on Github</button>
+                <button id="close-menu" onClick="closeMainMenu()" style="display: none;">Close Menu</button>
             </div>
 
             <div class="play-area" id="play-area" style="display: none;"></div>
 
-            <button id="reset-btn" onClick="reset_board()" class="hidden">Reset Board</button>
+            <button id="reset-btn" onClick="resetBoard()" class="hidden">Reset Board</button>
         </div>
         <script src="app.js"></script>
     </body>
