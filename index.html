@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tic-Tac-Toe</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Tic-Tac-Toe</h1>
+            <button id="main-menu-btn" onClick="showMainMenu()" style="display: none;">Main Menu</button>
+            <h2 id="winner" style="display: none;"></h2>
+
+            <div class="main-menu" id="main-menu">
+                <button id="play-computer" onClick="playComputer(true)">VS Computer</button>
+                <button id="play-player" onClick="playComputer(false)">VS Player</button>
+                <button id="github-link" onClick="openGithub()" style="display: none;">View on Github</button>
+                <button id="close-menu" onClick="closeMainMenu()" style="display: none;">Close Menu</button>
+            </div>
+
+            <div class="play-area" id="play-area" style="display: none;"></div>
+
+            <button id="reset-btn" onClick="resetBoard()" class="hidden">Reset Board</button>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
