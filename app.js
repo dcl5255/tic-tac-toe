@@ -121,7 +121,8 @@ const addComputerMove = (random=false) => {
         if (random){
             selected = selectRandomMove(playBoard);
         } else{
-            selected = minimax(playBoard)[0];
+            selected = alpha_beta_pruning(playBoard)[0];
+
             //[selected, evaluation, leaves] = alpha_beta_pruning(playBoard);
             //console.log(`Move: ${selected}, Optimal Play Evaluation: ${evaluation}, ${leaves} leaves searched.`)
         }
