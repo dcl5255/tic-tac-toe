@@ -121,7 +121,8 @@ const addComputerMove = (random=false) => {
         if (random){
             selected = selectRandomMove(playBoard);
         } else{
-            selected = minimax(playBoard)[0];
+            //selected = minimax(playBoard)[0];
+            selected = alpha_beta_pruning(playBoard)[0];
         }
         addMoveToBoard(p2, selected);
 
@@ -270,6 +271,67 @@ function minimax(board, computer_turn = true, limit=100, move=[], leaves=0) {
                 min_eval = current_eval;
                 best_move = new_move;
             }
+        }
+        return [best_move, min_eval, leaves];
+    }
+}
+
+function alpha_beta_pruning(board, computer_turn = true, limit=100, move=[], leaves=0, alpha = Number.NEGATIVE_INFINITY, beta = Number.POSITIVE_INFINITY) {
+    // Uses a modified minimax search algorithm to find the best move, evaluation, and number of checked leaves
+    // Eliminates branches using alpha-beta pruning
+    if (limit == 0 || checkBoardFull(board)) {
+        leaves = leaves + 1;
+        winner = checkMatch(board);
+        if (winner == p1){
+            evaluation = -1;
+        } else if (winner == p2) {
+            evaluation = 1;
+        } else{
+            evaluation = 0;
+        }
+
+        return [move, evaluation, leaves];
+    }
+
+    if (computer_turn) {
+        let best_move = null;
+        let max_eval = Number.NEGATIVE_INFINITY;
+
+        const board_successors = successors(board, computer_turn);
+        for (let successor of board_successors){
+            let new_board = successor[0];
+            let new_move = successor[1];
+
+            [junk, current_eval, leaves] =  alpha_beta_pruning(new_board, !computer_turn, limit - 1, new_move, leaves, alpha, beta);
+            if (current_eval > max_eval){
+                max_eval = current_eval;
+                best_move = new_move;
+            }
+            if (max_eval >= beta)
+                return [best_move, max_eval, leaves];
+            if (max_eval > alpha)
+                alpha = max_eval;
+        }
+        return [best_move, max_eval, leaves];
+
+    }else{
+        let best_move = null;
+        let min_eval = Number.POSITIVE_INFINITY;
+
+        const board_successors = successors(board, computer_turn);
+        for (let successor of board_successors){
+            let new_board = successor[0];
+            let new_move = successor[1];
+
+            [junk, current_eval, leaves] =  alpha_beta_pruning(new_board, !computer_turn, limit - 1, new_move, leaves, alpha, beta);
+            if (current_eval < min_eval){
+                min_eval = current_eval;
+                best_move = new_move;
+            }
+            if (min_eval <= alpha)
+                return [best_move, min_eval, leaves];
+            if (min_eval < beta)
+                beta = min_eval;
         }
         return [best_move, min_eval, leaves];
     }
